@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col">
+        <nav>
+            <ul class="navbar-list">
+                <li class="navbar-item">
+                    <a (click)="changeComponent('all')">All</a>
+                </li>
+                <li class="navbar-item">
+                    <a (click)="changeComponent('booksand-pdfs')">Books&PDF's</a>
+                </li>
+                <li class="navbar-item">
+                    <a (click)="changeComponent('templates')">Templates</a>
+                </li>
+                <li class="navbar-item">
+                    <a (click)="changeComponent('plugins')">Plugins</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="col">
+        <select name="select" id="checkboc" class="sort-select">
+            <option value="">Sort By Newest</option>
+            <option value="">Sort By Oldest</option>
+        </select>
+    </div>
+    <div [ngSwitch]="selectedComponent" class="content-container">
+        <app-all *ngSwitchCase="'all'"></app-all>
+        <app-booksand-pdfs *ngSwitchCase="'booksand-pdfs'"></app-booksand-pdfs>
+        <app-templates *ngSwitchCase="'templates'"></app-templates>
+        <app-plugins *ngSwitchCase="'plugins'"></app-plugins>
+        <div *ngSwitchDefault>
+            <app-all />
+        </div>
+    </div>
+</div>
